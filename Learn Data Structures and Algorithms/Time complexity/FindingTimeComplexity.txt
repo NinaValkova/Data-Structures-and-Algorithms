@@ -1,0 +1,134 @@
+To find out time complexity of an algorithm,
+we look at the number of operations performed
+based on the input size
+
+1. O(1)
+
+Let's take a look at the below code:
+a = 1
+b = 2
+print(a + b)
+Total three operations are being performed in three lines. Every single operation is denoted as O(1) (pronounced as Big O of 1).
+Thus, for the above example, we have time complexity as O(1) + O(1) + O(1) = 3 * O(1)
+But we denote the time complexity of the above algorithm as O(1), ignoring the constant 3.
+
+When calculating time complexity, we ignore the constant values because they don’t matter when the input size becomes large, because
+we are interested in how the execution time grows as the input size increases.
+
+----- Task -----
+What will be the time complexity of this algorithm?
+
+a = 4
+print(a)
+
+Correct Answer:
+
+O(1)
+
+There is no input.
+Total two operations are performed.
+Every single operation is denoted as O(1). 
+We have time complexity as O(1) + O(1) = 2 * O(1)
+But we denote the time complexity of the above algorithm as O(1),
+ignoring the constant 2.
+
+2. O(N)
+2.1
+Let's take a look at the below code:
+for i = 0 to N
+    print(i)
+
+In the above algorithm, we are running a loop from 0 to N.
+In total the loop will run N times.
+For each iteration of the loop we are doing one operation `print(i).
+The final time complexity will be: N * O(1) => O(N). - This time the algorithm dependent on a variable N and with that the time complexity also has the value N.
+
+
+------ Task -----
+What if we were doing two operations inside the loop?
+
+for i = 0 to N
+    print(i)
+    print(i * 2)
+
+Correct Answer:
+
+O(N)
+
+The loop runs N times and in each iteration we are doing 2 operations which have O(1) complexity.
+In total the operations are  N * (2 * O(1))
+constants and coefficients are disregarded => O(N)
+
+
+2.1 
+Let's take a look at the below code:
+a = 4 + 5
+for i = 0 to N
+    print(a)
+Time complexity of first line => O(1) Time complexity of the loop => O(N)
+Total time complexity => O(1) + O(N).
+
+But can we use two Big Os to define time complexity of an algorithm? - Nope
+
+Algorithm has multiple different parts with different time complexity,
+when determining the final time complexity we only look at the largest factor.
+
+Time complexity of the above algorithm will be: O(N)
+
+----- Task -----
+Can you determine final time complexity of the given algorithm, considering the two rules?
+
+for i = 0 to N
+    print(i)
+
+for j = 0 to N
+    print(j)
+
+Correct Answer:
+
+O(N)
+
+The loop runs N times and in each iteration we are doing 1 operation.
+The second loop also runs N times and in each iteration we are doing 1 operation.
+In total the operations are N * O(1) + N * O(1) => 2 * O(N)
+After removing constants => O(N)
+
+2.2 Finding time complexity - Nested loops
+Let's take a look at the below code:
+for i = 0 to N
+    for j = 0 to N
+        print(i)
+        print(j)
+
+The outer loop runs N times. And for each iteration of the outer loop, the inner loop also runs N times.
+For each iterations of inner loop there are two operations.
+Complexity of line 3 and 4 => O(1) + O(1) => O(1)
+Total complexity of inner loop => N * O(1) => O(N)
+Total complexity of outer loop  N * O(N) => O(N * N)
+It can also be represented as O(N ^ 2)
+ 
+Number of operations are multiplied in case of nested codes.
+
+----- Task -----
+Now can you find the complexity of this algorithm?
+
+for i = 0 to N
+    for j = 0 to N
+        for k = 0 to N
+            print(i)
+
+Correct Answer:
+
+O(N ^ 3)
+
+Three loops, each run for N times, total complexity is N * N * N * O(1), which is O(N ^ 3)
+
+3. Summary of Time Complexity
+
+Time complexity is a way to measure how long an algorithm takes to run as the amount of input data increases.
+Two rules of finding time complexity of an algorithm
+- Ignore constants
+- Focus only on the largest factor
+We ignore constants when finding the final time complexity. Also, if there are multiple pieces of an algorithm with varying time complexity, we only take the largest factor.
+
+Learned how to calculate time complexity of nested loops.

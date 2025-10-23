@@ -1,0 +1,245 @@
+----- Task -----
+Let's take a look at the below code:
+for i = 0 to n
+    print(i)
+
+What is the time complexity of this code?
+
+Correct Answer:
+
+O(n)
+
+The loop is running till n.
+
+----- Task -----
+Let's take a look at the below code:
+for i = 1 to n
+	for j = 1 to n / 2
+		print(i + j)
+
+Correct Answer:
+
+O(n^2)
+
+The outer loop runs till n and and the inner loop runs till n / 2. 
+Total operations are thus: (n * n) / 2.
+But as we can ignore constants when calculating time complexity, the final complexity will be O(n ^ 2).
+
+----- Task -----
+Let's take a look at the below code:
+for i = 1 to (n / 10)
+	for j = 1 to (2 * m)
+		print(i + j)
+
+What is the time complexity of this code?
+
+Correct Answer:
+
+O(n * m)
+
+First loop run till O(n/10). Ignore the constants: O(n)
+Inner loop will run till O(2*m). Ignore the constants: O(m)
+Total time complexity: O(n) * O(m) => O(n * m)
+
+----- Task -----
+Let's take a look at the below code:
+for i = 1 to (n / 10)
+	for j = 1 to (2 * m)
+		for l = 1 to k
+			print((i * j) + l)
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(nmk)
+
+There ar three loops:
+For outer loop it will go till O(n/10). Ignore the constant and time complexity will come as: O(n)
+For middle loop it will go till O(2*m). Ignore the constant and time complexity will be: O(m)
+The inner loop will go till O(k). Time complexity will be O(k)
+All three loop are nested. Total time complexity will be :O(n*m*k)
+
+
+----- Task -----
+Let's take a look at the below code:
+for i = 1 to n
+	for j = 1 to m
+		print(i + j)
+
+	for l = 1 to k
+		print(i + l)
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(nm+nk)
+
+The outer loop is running n times.
+And the inner loops are running (m + k) times.
+We need to keep m and k in the final complexity as they are both variables.
+Thus final time complexity is O(n * (m + k))
+
+----- Task -----
+Let's take a look at the below code:
+i = 1
+while (i < n)
+	i = i + 2
+	j = 1
+	while (j < m)
+		j = j + 1
+		print(i + j)
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(nm)
+
+The outer loop is running n / 2 times and the inner loop is running m times.
+Overall time complexity is O(n * m). Ignoring constants, of course
+
+1. Log N time complexity
+Look at the below code for an example
+i = 1
+while i <= n:
+    print(i)
+    i *= 2
+
+Here 
+i
+i is getting doubled in each iteration.
+
+For n = 4
+the iterations will be
+1
+2
+4
+
+Can we calculate the total number of iterations for any n?
+In each iteration, i is getting doubled, so the values of i will be 1,2,4,8,…,n.
+Anytime a variable in loop is multiplied by a number greater than 1, the time complexity of the loop will be of the form: 
+log(n)
+
+
+----- Task -----
+Let's take a look at the below code:
+i = 1
+while i <= n:
+    print(i)
+    i *= 3
+
+What will be the time complexity of this algorithm?
+Correct Answer:
+
+O(log(n))
+
+Note how we don't consider the base(loop runs O(log₃ n) times) when writing the time complexity in log. In Big-O notation, we ignore constant factors and constant bases
+
+----- Task -----
+Let's take a look at the below code:
+i = 1
+while i <= n:
+    print(i)
+    i *= 2 → Time complexity: O(log n)
+
+j = 1
+while j <= n:
+    print(j)
+    j = j + 1 → Time complexity: O(n)
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(n)
+
+The time complexity will be be O(n) because we only consider the biggest factor when an algorithm has difference parts with different complexities. O(logn)+O(n)=O(n)
+
+2. Square root N time complexity
+There is only one other non-linear time complexity which is important to know: O(sqrt(N)).
+
+i = 1
+while i * i <= n:
+    print(i)
+    i += 1
+
+This is an example of a code with O(sqrt(n)) time complexity.
+
+----- Task -----
+for i = 0 to n:
+   j = 0
+   while j * j <= n:
+      print(i + j)
+      j = j + 1
+
+What is the complexity of this algorithm?
+Correct Answer:
+
+O(n * sqrt(n))
+
+The while loop will give O(sqrt(n)) and is nested under the for loop which gives Time complexity of O(n).
+Total Time complexity = O(n*sqrt(n)).
+
+
+----- Task -----
+
+i = 1
+while i * i <= n:
+    print(i)
+    i += 1
+
+i = 1
+while i <= n:
+    print(i)
+    i *= 2
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(sqrt(n))
+
+Among sqrt(n) and log(n), sqrt(n) is the bigger factor. That's why is it considered in the final time complexity.
+
+
+Let’s compare their growth:
+n	       √n	   log₂n
+16	       4  	    4
+100	       10	    ~6.6
+1,000,000  1,000	~20
+
+
+----- Task -----
+for i = 1 to n:
+    j = 1
+    while j <= n:
+        print(i + j)
+        j *= 2
+
+What is the time complexity of this code?
+Correct Answer:
+
+O(n * log(n))
+
+For each iteration of the outer loop, the inner loop runs O(log n) times.
+Since the outer loop runs n times, and each iteration of the outer loop executes an O(log n) operation,
+the total time complexity is => O(n) × O(logn) = O(nlogn)
+
+-----------------------------------------------------------------
+
+loop like:
+
+i = 1
+while i <= n:
+    i *= 2
+
+
+After each iteration, i doubles:
+
+𝑖=2^𝑥  (because after 1 iteration i = 2, after 2 iterations i = 4 = 2², after 3 iterations i = 8 = 2³, and so on)
+
+The loop continues as long as i≤n
+So we have:2^x ≤ n
+log 2(2^x)≤log 2(n)
+where log 2(2^x) => xlog 2(2)
+but log 2(2) is 1
+
+Thus, the equation becomes:
+x≤log 2(n)

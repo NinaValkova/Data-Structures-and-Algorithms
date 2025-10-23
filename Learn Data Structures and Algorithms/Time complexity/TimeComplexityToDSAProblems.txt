@@ -1,0 +1,166 @@
+1. Nested loops
+Let's take a look at the below code:
+for i = 0 to N
+    print(i)
+
+for j = 0 to M
+    print(j)
+
+First loop => O(N)
+Second loop => O(M)
+
+Total => O(N + M)
+
+We cannot ignore either of N or M because both are variable and we don't know which one is bigger or smaller.
+So we have to keep both of them in the final complexity.
+
+If we are already given that M is very large as compared to N,
+then we can say the complexity is O(M).
+But in general case, it is still O(N + M).
+
+------ Task -----
+Now can you think of what the time complexity will be for this algorithm?
+
+for i = 0 to N
+    print(i)
+
+for j = 0 to M
+    print(j)
+
+for i = 0 to N
+    print(i)
+
+Correct Answer:
+
+O(N + M)
+
+There are three loops running independently.
+O(N)+O(M)+O(N) => 2*O(N)+O(M) ignoring the constants.
+The time complexity will still be O(N + M) as we can ignore the constant 2.
+
+
+------ Task -----
+
+Let's take a look at the below code:
+for i = 0 to N
+    for j = 0 to M
+        print(i)
+
+Correct Answer:
+
+O(N * M)
+
+Outer loop runs for N iterations, and for each iteration of the outer loop the inner loop again runs for M iterations.
+Total operations => N * M * O(1) => O(N * M)
+We cannot ignore any of N or M as both are variable.
+
+2. Time complexity for DSA(Data Structures and Algorithms)
+Constraint on the size of input given to you.
+
+The constraints section generally look like this:
+1 ≤ N ≤ 10 ^ 5
+This means that the value of N can range from 1 to 10^5.
+
+In general can run up to 10 ^ 8 operations per second.
+You can calculate the worst case time complexity of your algorithm and check if the total number of operations are beyond 10 ^ 8.
+If the operations performed by your algorithm exceeds 10 ^ 8, you will get TLE or Time limit exceeded.
+
+----- Task -----
+What will the number of operations performed by your algorithm be,
+if maximum value of N can be 10 ^ 6 and time complexity of the algorithm is O(N)?
+
+Correct Answer:
+
+10 ^ 6
+
+Total operations => O(N) = 10^6 (approx.)
+
+----- Task -----
+Let's take a look at the below code:
+sum = 0
+for i = 1 to N
+    sum += i
+print(sum)
+
+and the constraints on N are:
+1≤N≤100
+
+Will the above algorithm run within 1 second?
+
+Correct Answer:
+
+Yes
+
+The time complexity of the given algorithm is O(N), which is N operations for any input N.
+When N can be at most 100, the total operations will also be 100.
+This can easily run within a second as the most computers support upto 10 ^ 8 operations or 100 million operations within a second.
+
+----- Task -----
+Let's take a look at the below code:
+sum = 0
+for i = 1 to N
+    sum += i
+print(sum)
+
+Can this same algorithm run within a second if the constraints on N are:
+1≤N≤10^5 ?
+
+Yes it can still run because 10 ^ 5 is still less than 10 ^ 8.
+
+----- Task -----
+Let's take a look at the below code:
+sum = 0
+for i = 1 to N
+     for j = 1 to N
+          sum += i
+          sum += j
+
+Can this algorithm run within a second if the constraints on N are:
+1≤N≤10^5 ?
+
+Correct Answer:
+
+No
+
+The time complexity of the given algorithm is O(N ^ 2), which is N * N operations for any input N.
+When N can be at most 10 ^ 5, the total operations will be 10 ^ 5 * 10 ^ 5 => 10 ^ 10.
+10 ^ 10 is higher than 10 ^ 8 which is the number of operation a computer can run within a second. Thus this algorithm will give TLE or Time limit exceeded.
+
+
+3. 
+Let's now look at time complexity of some of the standard algorithms.
+Remembering this numbers help you quickly decide whether you can do that operation or not based on the constraints.
+
+In Data Structures and Algorithms (DSA), 
+time complexity measures how an algorithm's execution time grows with input size,
+while the constraint 1≤N≤10^5 indicates the maximum input size is 10^{5}.
+A common rule of thumb is that an algorithm must perform fewer than 10^8 operations to run within one second,
+so for 10^5 , you should aim for an algorithm with a time complexity of O(N) or O(N\log N), but avoid O(N^2) or worse. 
+
+
+------- Loops ------
+
+Algorithm                     Complexity        Max value of N possible
+Single loop till N              O(N)                   10^8
+Nested loops both till N        O(N^2)                 10^4
+Two loops one by one till N     O(N)                   10^8
+
+
+------ Searching ------
+
+Algorithm                     Complexity        Max value of N possible
+Linear search                   O(N)                   10^8
+Binary search                   O(logN)	               10^10^8
+
+
+------ Sorting ------
+
+Algorithm                     Complexity        Max value of N possible
+Bubble sort, insertion sort      O(N^2)                10^4
+Merge sort                       O(NlogN)              10^7
+
+------ Array or list operations ------
+Algorithm                                        Complexity
+Adding an element at the end of a list              O(1) 
+Adding an element at the start of a list	        O(N)
+Counting the occurrences of a number in an array    O(N)
